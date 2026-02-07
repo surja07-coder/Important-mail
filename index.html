@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Propose Day ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+}
+
+body{
+    height:100vh;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+    color:#fff;
+    padding:20px;
+}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:16px;
+    margin-bottom:20px;
+}
+
+.heart{
+    font-size:80px;
+    cursor:pointer;
+    animation:heartbeat 1.5s infinite;
+}
+
+.hidden{
+    display:none;
+}
+
+.proposal{
+    font-size:20px;
+    margin-top:20px;
+}
+
+.final{
+    font-family:'Great Vibes',cursive;
+    font-size:30px;
+    margin:15px 0;
+}
+
+.buttons{
+    margin-top:20px;
+    position:relative;
+    height:80px;
+}
+
+button{
+    padding:10px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+#yesBtn{
+    background:#ff4b6e;
+    color:#fff;
+}
+
+#noBtn{
+    background:#fff;
+    color:#ff4b6e;
+    position:absolute;
+    left:60%;
+}
+
+/* floating hearts */
+.float-heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:floatUp 6s linear forwards;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-100vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Propose Day ❤️</h1>
+    <p>Tap the heart… I have something special to say 💕</p>
+
+    <div class="heart" onclick="showProposal()">❤️</div>
+
+    <div id="proposalBox" class="hidden">
+        <div class="proposal">
+            Every moment with you feels magical ✨<br>
+            You are my today & all my tomorrows 💖
+        </div>
+
+        <div class="final">
+            Will you be mine forever? 💍
+        </div>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="yesClicked()">YES 💘</button>
+            <button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">NO 😜</button>
+        </div>
+
+        <p style="margin-top:10px;">— Yours always 💕</p>
+    </div>
+</div>
+
+<script>
+function showProposal(){
+    document.getElementById("proposalBox").classList.remove("hidden");
+    createHearts();
+}
+
+function yesClicked(){
+    alert("Yayyy! 💖 I knew it! Forever starts now 😘");
+    createHearts();
+}
+
+function moveNo(){
+    let noBtn=document.getElementById("noBtn");
+    let x=Math.random()*200;
+    let y=Math.random()*40;
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
+}
+
+function createHearts(){
+    for(let i=0;i<25;i++){
+        let heart=document.createElement("div");
+        heart.className="float-heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(Math.random()*3+3)+"s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),6000);
+    }
+}
+</script>
+
+</body>
+</html>
